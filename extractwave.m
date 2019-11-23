@@ -8,7 +8,7 @@ function [outputArg1,outputArg2] = extractwave(f1,f2, sample, titleg)
         'SampleRate',256);
         %fvtool(bpFilt);
 
-        [b,a] = tf(bpFilt)
+        [b,a] = tf(bpFilt);
         %.,?freqz(b, a, 255, 256);title("Band Pass Filter");
 
         Wave = filter(b,a, sample(:, n));
