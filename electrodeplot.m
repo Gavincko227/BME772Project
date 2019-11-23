@@ -4,8 +4,9 @@ function [sample,xsing] = electrodeplot(j,structarray, sample)
     %sample = [(0:1:255) ; zeros(1,256)]';
     Fs = 256;
     f = Fs*(0:(256/2))/256;
-    sum = ((j + 1) * 2) -1;
-    sum2 = (j+1) * 2; 
+    sum = ((j + 1) * 3) -2;
+    sum2 = ((j+1) * 3) -1; 
+    sum3 = ((j+1)*3);
     % sum2 = sum+1;
     for n=1:16384             
         if structarray(n).channel == j                      
@@ -14,7 +15,7 @@ function [sample,xsing] = electrodeplot(j,structarray, sample)
                     sample(i, j+2) = structarray(n).sensorValue;
                 end
             end
-            subplot(4, 2, sum)
+            subplot(4, 3, sum)
 %             figure;
             plot(sample(:,1),sample(:,j+2));
             axis tight
@@ -23,10 +24,17 @@ function [sample,xsing] = electrodeplot(j,structarray, sample)
 %             figure;
 %             subplot(5,1,sum)
 %             plot(fft(sample(:,2)))
-            x = abs(fft(sample(:,j+2))/255);
-            xsing = x(1:(256/2+1));
-            subplot(4,2,sum2);
+            x = abs(fft(sample(:,j+2))/255); %255 the number of samples
+            xsing = x(1:(256/2+1)); % cutting the sammple by half
+            subplot(4,3,sum2);
             plot(f,xsing);
+            y = abs(stft(sample(:,j+2))/255);
+            ysing = y(1:(256/2+1));
+%             subplot(4,3,sum3);
+% %             %plot(f,ysing);
+%             stft((sample(:,j+2))/255)
+%             
+            
 %             x=1;
 %             plot(x);
 %             axis tight
@@ -38,4 +46,3 @@ function [sample,xsing] = electrodeplot(j,structarray, sample)
 %          sample = [(0:1:255) ; zeros(1,256)]'
     end 
 end
-
