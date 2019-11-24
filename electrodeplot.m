@@ -7,6 +7,8 @@ function [sample,xsing] = electrodeplot(j,structarray, sample)
     sum = ((j + 1) * 3) -2;
     sum2 = ((j+1) * 3) -1; 
     sum3 = ((j+1)*3);
+    
+    t = [0:255]/Fs;
     % sum2 = sum+1;
     for n=1:16384             
         if structarray(n).channel == j                      
@@ -18,6 +20,7 @@ function [sample,xsing] = electrodeplot(j,structarray, sample)
             subplot(4, 3, sum)
 %             figure;
             plot(sample(:,1),sample(:,j+2));
+            %plot(t, sample(:,j+2):
             axis tight
             ylabel (j);
             title ('A');
