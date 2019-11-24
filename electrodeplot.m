@@ -17,9 +17,9 @@ function [sample,xsing] = electrodeplot(j,structarray, sample)
                     sample(i, j+2) = structarray(n).sensorValue;
                 end
             end
-            subplot(4, 3, sum)
-%             figure;
-            plot(sample(:,1),sample(:,j+2));
+%             subplot(4, 3, sum)
+% %             figure;
+%             plot(sample(:,1),sample(:,j+2));
             %plot(t, sample(:,j+2):
             axis tight
             ylabel (j);
@@ -29,8 +29,8 @@ function [sample,xsing] = electrodeplot(j,structarray, sample)
 %             plot(fft(sample(:,2)))
             x = abs(fft(sample(:,j+2))/255); %255 the number of samples
             xsing = x(1:(256/2+1)); % cutting the sammple by half
-            subplot(4,3,sum2);
-            plot(f,xsing);
+%             subplot(4,3,sum2);
+%             plot(f,xsing);
             y = abs(stft(sample(:,j+2))/255);
             ysing = y(1:(256/2+1));
 %             subplot(4,3,sum3);
