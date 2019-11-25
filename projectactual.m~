@@ -62,7 +62,7 @@ for i=21:50;
     [betawave, features(1:64, 10:12)] = extractwave(12, 30, sample, "Beta", i);
     [gammawave, features(1:64, 13:15)] = extractwave(30, 100, sample, "Gamma", i);
     
-    M30{i-20} = features;
+    M30{i} = features;
 end
 
 %%
