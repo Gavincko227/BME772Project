@@ -68,9 +68,9 @@ end
 %%
 j=1;
 figure;
-for i=1:10
-    alcohalic = cell2mat(M(i));
-    control = cell2mat(M(i+10));
+for i=1:20
+    alcohalic = cell2mat(realdata(i));
+    control = cell2mat(realdata(i+20));
     %figure
     i
     %for j=53:54

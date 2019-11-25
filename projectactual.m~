@@ -62,15 +62,15 @@ for i=21:50;
     [betawave, features(1:64, 10:12)] = extractwave(12, 30, sample, "Beta", i);
     [gammawave, features(1:64, 13:15)] = extractwave(30, 100, sample, "Gamma", i);
     
-    M30{i} = features;
+    M30{i-20} = features;
 end
 
 %%
 j=1;
 figure;
 for i=1:10
-    alcohalic = cell2mat(M(i));
-    control = cell2mat(M(i+10));
+    alcohalic = cell2mat(realdata(i));
+    control = cell2mat((i+10));
     %figure
     i
     %for j=53:54
