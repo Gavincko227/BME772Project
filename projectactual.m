@@ -1,7 +1,7 @@
 clear sample;
 
 M = cell(10,1);
-for i=236:246
+for i=1:10
     %figure;
     file = ['/Users/gavinckoalagesan/Library/Mobile Documents/com~apple~CloudDocs/Year4/BME 772/LABS/Project/Alcoholics/SMNI_CMI_TRAIN/Data', num2str(i), '.csv']
 %file = 'Data1.csv';    
@@ -62,9 +62,27 @@ for i=236:246
     [betawave, features(1:64, 10:12)] = extractwave(12, 30, sample, "Beta", i);
     [gammawave, features(1:64, 13:15)] = extractwave(30, 100, sample, "Gamma", i);
     
-    M{i-225} = features;
+    M{i} = features;
 end
 
 %%
 
-
+figure;
+for i=1:10
+    alcohalic = cell2mat(M(i));
+    control = cell2mat(M(i+10));
+    figure;
+    hold on
+    scatter(alcohalic(:,2),alcohalic(:,3),'+g')
+    scatter(control(:,2),control(:,3),'.r')
+    xlabel('Form Factor')
+    ylabel('Entropy')
+    legend('Alcohalics','Control')
+    title('Data for classification')
+    hold off
+            
+end
+    
+    
+    
+    
